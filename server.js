@@ -21,20 +21,33 @@ const server = app.listen(HTTP_PORT, () => {
 });
 
 // Root endpoint
-app.get("/app/", (req,res) => {
+app.get("/app", (req,res) => {
 	res.send("200 OK");
 	res.status(200);
 });
 
 // Single player rps endpoint
-app.get("/app/rps/", (req,res) => {
+app.get("/app/rps", (req,res) => {
 	res.json(rps());
 });
 
 // Single player rpsls endpoint
-app.get("/app/rpsls/", (req,res) => {
+app.get("/app/rpsls", (req,res) => {
 	res.json(rpsls());
 });
+
+// Multiplayer request body rps endpoint
+app.post("/app/rps/play", (req,res) => {
+	let shot = req.body.shot;
+	res.json(rps(shot));
+});
+
+// Multiplayer request body rpsls endpoint
+app.post("/app/rpsls/play", (req,res) => {
+	let shot = req.body.shot;
+	res.json(rpsls(shot));
+});
+
 
 // Defualt route
 app.use(function(req, res){
