@@ -17,12 +17,12 @@ if (args.port) {
 
 // Start server
 const server = app.listen(HTTP_PORT, () => {
-	console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT))
+	console.log(`Server running on port ${HTTP_PORT}`)
 });
 
 // Root endpoint
 app.get("/app/", (req,res) => {
-	res.json({"message":"API works (200)"});
+	res.send("200 OK");
 	res.status(200);
 });
 
@@ -38,6 +38,6 @@ app.get("/app/rpsls/", (req,res) => {
 
 // Defualt route
 app.use(function(req, res){
-	res.json({"message":"Endpoint not found. (404)"});
+	res.send("404 NOT FOUND");
 	res.status(404);
 });
