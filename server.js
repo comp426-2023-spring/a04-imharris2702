@@ -26,6 +26,16 @@ app.get("/app/", (req,res) => {
 	res.status(200);
 });
 
+// Single player rps endpoint
+app.get("/app/rps/", (req,res) => {
+	res.json(rps());
+});
+
+// Single player rpsls endpoint
+app.get("/app/rpsls/", (req,res) => {
+	res.json(rpsls());
+});
+
 // Defualt route
 app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
