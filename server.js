@@ -19,3 +19,15 @@ if (args.port) {
 const server = app.listen(HTTP_PORT, () => {
 	console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT))
 });
+
+// Root endpoint
+app.get("/app/", (req,res) => {
+	res.json({"message":"API works (200)"});
+	res.status(200);
+});
+
+// Defualt route
+app.use(function(req, res){
+	res.json({"message":"Endpoint not found. (404)"});
+	res.status(404);
+});
