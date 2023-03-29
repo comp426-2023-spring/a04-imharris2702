@@ -48,6 +48,16 @@ app.post("/app/rpsls/play", (req,res) => {
 	res.json(rpsls(shot));
 });
 
+// Multiplayer parameter rps endpoint
+app.get("/app/rps/play/:shot", (req,res) => {
+	res.json(rps(req.params.shot));
+});
+
+// Multiplayer parameter rpsls endpoint
+app.get("/app/rpsls/play/:shot", (req,res) => {
+	res.json(rpsls(req.params.shot));
+});
+
 
 // Defualt route
 app.use(function(req, res){
