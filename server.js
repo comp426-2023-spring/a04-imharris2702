@@ -35,7 +35,16 @@ app.get("/app/rpsls", (req,res) => {
 	res.json(rpsls());
 });
 
-// Multiplayer request body rps endpoint
+// Multiplayer url encoded request body rps endpoint
+app.get("/app/rps/play", (req,res) => {
+	let shot = req.body.shot;	
+	if (!shot) {
+		shot = req.query.shot;
+	}
+	res.json(rps(shot));
+});
+
+// Multiplayer json request body rps endpoint
 app.post("/app/rps/play", (req,res) => {
 	let shot = req.body.shot;	
 	if (!shot) {
@@ -44,7 +53,16 @@ app.post("/app/rps/play", (req,res) => {
 	res.json(rps(shot));
 });
 
-// Multiplayer request body rpsls endpoint
+// Multiplayer url encoded request body rpsls endpoint
+app.get("/app/rpsls/play", (req,res) => {
+	let shot = req.body.shot;	
+	if (!shot) {
+		shot = req.query.shot;
+	}
+	res.json(rpsls(shot));
+});
+
+// Multiplayer json request body rpsls endpoint
 app.post("/app/rpsls/play", (req,res) => {
 	let shot = req.body.shot;
 	if (!shot) {
