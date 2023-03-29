@@ -22,8 +22,7 @@ const server = app.listen(HTTP_PORT, () => {
 
 // Root endpoint
 app.get("/app", (req,res) => {
-	res.send("200 OK");
-	res.status(200);
+	res.status(200).send("200 OK");
 });
 
 // Single player rps endpoint
@@ -58,9 +57,7 @@ app.get("/app/rpsls/play/:shot", (req,res) => {
 	res.json(rpsls(req.params.shot));
 });
 
-
 // Defualt route
 app.use(function(req, res){
-	res.send("404 NOT FOUND");
-	res.status(404);
+	res.status(404).send("404 NOT FOUND");
 });
