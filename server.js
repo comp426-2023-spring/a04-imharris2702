@@ -37,13 +37,19 @@ app.get("/app/rpsls", (req,res) => {
 
 // Multiplayer request body rps endpoint
 app.post("/app/rps/play", (req,res) => {
-	let shot = req.body.shot;
+	let shot = req.body.shot;	
+	if (!shot) {
+		shot = req.query.shot;
+	}
 	res.json(rps(shot));
 });
 
 // Multiplayer request body rpsls endpoint
 app.post("/app/rpsls/play", (req,res) => {
 	let shot = req.body.shot;
+	if (!shot) {
+		shot = req.query.shot;
+	}
 	res.json(rpsls(shot));
 });
 
